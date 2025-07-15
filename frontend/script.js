@@ -4,6 +4,7 @@ let tasks = [];
 let theme = "";
 let checkbox_state = false;
 let taskObj = [];
+let showcompletedtasks = false;
 
 
 let storage_tasks = localStorage.getItem("tasks");
@@ -42,17 +43,30 @@ function addTask() {
         alert("Enter a valid value");
         return;
     }
-
     tasks.push({ text: taskText, completed: false });
     localStorage.setItem("tasks", JSON.stringify(tasks));
     taskInput.value = "";
     renderTasks();
 }
+function showTasks(){
+    let showcompleted_tasks = document.querySelector(".show_completed_tasks")
+    if (showcompleted_tasks.checked){
+       showcompletedtasks = true
+    }
+    else{
+        showcompletedtasks = false 
+    }
+    renderTasks()
+}
 
 function renderTasks() {
     list.innerHTML = ""; // clear list before rendering
-
+  
+    
     tasks.forEach((taskText, index) => {
+        if (taskText.completed && showcompletedtasks === false){
+            return;
+        }
         let newList = document.createElement("li");
         newList.className = "task-list";
 
