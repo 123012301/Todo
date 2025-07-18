@@ -5,6 +5,7 @@ let theme = "";
 let checkbox_state = false;
 let taskObj = [];
 let showcompletedtasks = false;
+const inputTask = document.querySelector(".taskkInput input");
 
 
 let storage_tasks = localStorage.getItem("tasks");
@@ -48,6 +49,13 @@ function addTask() {
     taskInput.value = "";
     renderTasks();
 }
+inputTask.addEventListener("keydown", (event)=>{
+    if (event.key == "Enter"){
+        event.preventDefault();
+        addTask()
+    }
+})
+
 function showTasks(){
     let showcompleted_tasks = document.querySelector(".show_completed_tasks")
     if (showcompleted_tasks.checked){

@@ -75,3 +75,20 @@ h1{
 .edit-button{
   margin-left: 20px;
 }
+.task-list {
+  display: flex;
+  align-items: center;
+ 
+  margin-top: 8px;
+  padding: 4px 8px;
+}
+
+.task-list input[type="checkbox"] {
+  flex: 0 0 auto;
+}
+
+.task-list .to-do-tasks {
+  flex: 0.2; /* makes text take the available space */
+  min-width: 0;
+ 
+}
